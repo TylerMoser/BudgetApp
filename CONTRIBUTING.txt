@@ -7,3 +7,10 @@ include a detailed explanation of the change being made and why, along with the 
 relevant, also include the issue number being addressed.
 
 This project can be downloaded and imported directly into Android Studio.
+
+When contributing Kotlin code, please follow the conventions outlined in the official Kotlin Coding
+Conventions guide available at https://kotlinlang.org/docs/reference/coding-conventions.html
+
+When contributing code in another JVM language (including Java), please follow these same
+conventions where applicable, and follow best practices for the language being used where the
+Kotlin conventions are not applicable.
