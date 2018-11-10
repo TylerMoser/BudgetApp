@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tag="add_new_expense_fragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".android.fragments.AddNewExpenseFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/newExpenseTitleTextView"
+                android:layout_width="345dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="Add a New Expense"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/expenseDateEditText"
+                android:layout_width="345dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newExpenseTitleTextView" />
+
+            <EditText
+                android:id="@+id/expenseDescriptionEditText"
+                android:layout_width="345dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Expense Description"
+                android:inputType="textAutoComplete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expenseDateEditText" />
+
+            <EditText
+                android:id="@+id/expenseAmountEditText"
+                android:layout_width="345dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Amount"
+                android:inputType="numberSigned"
+                android:numeric="integer|signed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.511"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expenseDescriptionEditText" />
+
+            <Button
+                android:id="@+id/submitNewExpenseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="onSubmitClick"
+                android:text="Submit"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expenseAmountEditText" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:checkable="true"
+        android:id="@+id/drawer_new_budget"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="New Budget"
+        android:orderInCategory="0" />
+
+    <group
+        android:id="@+id/drawer_other_group"
+        android:checkableBehavior="single"
+        android:orderInCategory="999">
+
+        <item
+            android:id="@+id/drawer_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="App Settings" />
+    </group>
+
+</menu>

@@ -1,0 +1,9 @@
+Please use GitHub's issue functionality to report bugs or request new features. If reporting a bug,
+include an explanation of what the issue is and the steps to reproduce it. If requesting a new
+feature, the more information, the better.
+
+If you want to take the next step and make changes to the code, submit a pull request. Please
+include a detailed explanation of the change being made and why, along with the pull request. If 
+relevant, also include the issue number being addressed.
+
+This project can be downloaded and imported directly into Android Studio.

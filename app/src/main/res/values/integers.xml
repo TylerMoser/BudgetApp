@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="sheet_info_developer_metadata_key">0</integer>
+
+    <integer name="authentication_request_code_no_action">1</integer>
+    <integer name="authentication_request_code_get_sheet">2</integer>
+    <integer name="authentication_request_code_append_expense">3</integer>
+    <integer name="authentication_request_code_get_navigation_drawer_data">4</integer>
+    <integer name="authentication_request_code_update_navigation_drawer_data">5</integer>
+    <integer name="authentication_request_code_archive_this_sheet">6</integer>
+    <integer name="authentication_request_code_refresh">7</integer>
+    <integer name="authentication_request_code_unarchive_this_sheet">8</integer>
+    <integer name="authentication_request_code_change_spreadsheet">9</integer>
+    <integer name="authentication_request_code_add_new_budget">10</integer>
+    <integer name="authentication_request_code_does_sheet_exist">11</integer>
+</resources>
