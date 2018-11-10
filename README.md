@@ -1,4 +1,4 @@
-![App Icon](https://github.com/TylerMoser/BudgetApp/blob/master/Screenshots/AppLauncherIcon.png)
+![App Icon](https://github.com/TylerMoser/BudgetApp/blob/master/Screenshots/AppLauncherIcon.png | width=200)
 
 ### What is this project? Why does it exist?
 This is yet another budget app for Android. The key difference between this app and others is 
