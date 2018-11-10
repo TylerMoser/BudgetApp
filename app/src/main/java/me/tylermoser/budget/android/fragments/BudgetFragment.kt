@@ -114,6 +114,11 @@ abstract class BudgetFragment: NavDrawerFragment() {
         }
     }
 
+    /**
+     * Provides a point to call back to after authentication for loading a sheet from Google's
+     * servers. This checks if the sheet exists and then refreshes if it does, or displays a
+     * message and responds accordingly if it does not.
+     */
     fun loadSheetFromServerAuthenticated() {
         budgetActivity.api.doesSheetExist(budgetActivity.spreadsheetID, sheetID) {
             if (it != null) {
