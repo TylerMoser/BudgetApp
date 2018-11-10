@@ -8,6 +8,14 @@ relevant, also include the issue number being addressed.
 
 This project can be downloaded and imported directly into Android Studio.
 
+All app development should occur in the stable branch.
+
+Contributors should create a new branch off of stable for each app change they are implementing.
+Where possible, name these branches to reflect an issue or purpose. When done, submit a pull
+request against stable. After your changes are approved they can be merged with stable. At
+development milestones or regular intervals the stable branch will be merged with master to create
+a new release.
+
 When contributing Kotlin code, please follow the conventions outlined in the official Kotlin Coding
 Conventions guide available at https://kotlinlang.org/docs/reference/coding-conventions.html
 
