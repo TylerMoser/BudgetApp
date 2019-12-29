@@ -138,7 +138,9 @@ class NavigationDrawerHelper(val activity: BudgetActivity, val cache: Cache) {
 
             setOnMenuItemClickListener {
                 if (!activity.isCurrentFragmentInitialized() || (activity.isCurrentFragmentInitialized()
-                        && (activity.currentFragment is AppSettingsFragment || entry.sheetId != activity.budgetFragment.sheetID))) {
+                        && (activity.currentFragment is AppSettingsFragment
+                                || activity.currentFragment is ReorderActiveBudgetsFragment
+                                || entry.sheetId != activity.budgetFragment.sheetID))) {
                     changeMainFragment(newFragment(entry))
                 }
                 false

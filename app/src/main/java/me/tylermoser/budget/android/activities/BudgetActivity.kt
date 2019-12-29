@@ -150,6 +150,10 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 is AppSettingsFragment -> {
                     outState.putString(savedFragmentTypeKey, AppSettingsFragment::class.java.name)
                 }
+                is ReorderActiveBudgetsFragment -> {
+                    outState.putString(savedFragmentTypeKey,
+                            ReorderActiveBudgetsFragment::class.java.name)
+                }
                 is ActiveBudgetFragment -> {
                     outState.putString(savedFragmentTypeKey, ActiveBudgetFragment::class.java.name)
                     outState.putString(savedSheetIDKey, activeBudgetFragment.sheetID)
@@ -225,6 +229,8 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.drawer_new_budget -> showAddNewBudgetDialog()
             R.id.drawer_settings ->
                 navDrawerHelper.changeMainFragment(AppSettingsFragment.newInstance())
+            R.id.reorder_active_budgets ->
+                navDrawerHelper.changeMainFragment(ReorderActiveBudgetsFragment.newInstance())
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
@@ -379,6 +385,18 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     /**
+     * Called by [ReorderActiveBudgetsFragment] when a user has made their changes to the order that
+     * the active budgets are displayed in the navigation drawer and they want these changes to take
+     * affect.
+     *
+     * @param v The button as a [android.view.View] that was clicked
+     */
+    @Suppress("UNUSED_PARAMETER")
+    fun onApplyReorderActiveBudgetsClick(v: android.view.View) {
+
+    }
+
+    /**
      * A helper method used to load the main fragment after rotating the screen
      *
      * @param savedInstanceState The [Bundle] containing the data that was saved when the screen
@@ -391,7 +409,9 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         if (savedFragmentType == AppSettingsFragment::class.java.name) {
             navDrawerHelper.changeMainFragment(AppSettingsFragment.newInstance())
-        } else if (savedFragmentType == ActiveBudgetFragment::class.java.name){
+        } else if (savedFragmentType == ReorderActiveBudgetsFragment::class.java.name) {
+            navDrawerHelper.changeMainFragment(ReorderActiveBudgetsFragment.newInstance())
+        } else if (savedFragmentType == ActiveBudgetFragment::class.java.name) {
             navDrawerHelper.changeMainFragment(
                     ActiveBudgetFragment.newInstance(this, savedSheetID, savedSheetName))
         } else if (savedFragmentType == ArchivedBudgetFragment::class.java.name) {
@@ -457,7 +477,7 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
      */
     private fun getNavigationDrawerDataFromServer() {
         api.getSpreadsheetMetadata(spreadsheetID) {
-            if (!it.isEmpty()) {
+            if (it.isNotEmpty()) {
                 populateNavigationDrawer(it)
             }
 

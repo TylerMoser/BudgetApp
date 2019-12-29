@@ -22,7 +22,7 @@ class AppBarHelper(private val budgetActivity: BudgetActivity) {
      * Set the App Bar to match the desired appearance for a
      * [me.tylermoser.budget.android.fragments.AppSettingsFragment]
      */
-    fun editForSettings(fragment: Fragment) {
+    fun editForSettings(fragment: Fragment, titleText: String = "App Settings") {
         with(budgetActivity) {
             toolbar.layoutParams.setHeightDP(54, fragment)
             leftoverTextView.setText("")
@@ -30,7 +30,7 @@ class AppBarHelper(private val budgetActivity: BudgetActivity) {
             slash.setText("")
             refreshButton.visibility = View.INVISIBLE
             refreshButton.isEnabled = false
-            appSettingsTextView.setText("App Settings")
+            appSettingsTextView.setText(titleText)
         }
     }
 
