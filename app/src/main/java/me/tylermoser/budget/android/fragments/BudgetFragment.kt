@@ -1,7 +1,7 @@
 package me.tylermoser.budget.android.fragments
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import com.google.android.material.snackbar.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,7 +71,7 @@ abstract class BudgetFragment: NavDrawerFragment() {
     /**
      * Populates this [android.support.v4.app.Fragment]'s UI with the data stored in the cache
      */
-    private fun loadSheetFromCache() {
+    fun loadSheetFromCache() {
         val cachedSheet = budgetActivity.cache.getBudgetSheet(sheetID)
         if (cachedSheet != null) {
             populateSheetUI(cachedSheet)

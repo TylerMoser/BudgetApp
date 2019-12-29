@@ -1,5 +1,6 @@
 package me.tylermoser.budget.android.services
 
+import android.util.Log
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.json.GoogleJsonResponseException
 import com.google.api.client.json.gson.GsonFactory
@@ -91,6 +92,7 @@ class GoogleSheetsApiV4(
 
     override fun appendNewExpense(
             spreadsheetID: String,
+            sheetID: String,
             sheetName: String,
             expense: Expense,
             doAfterRequest: () -> Unit
@@ -100,7 +102,12 @@ class GoogleSheetsApiV4(
                     .append(spreadsheetID, "'$sheetName'!A:E", expense.toValueRange())
                     .setValueInputOption("USER_ENTERED")
                     .execute()
-            // TODO: Update cache for this sheet to include the newly appended expense
+
+            // Update cache for this sheet to include the newly appended expense
+            cache?.getBudgetSheet(sheetID)?.let {
+                it.expenses.add(expense)
+                cache.putBudgetSheet(sheetID, it)
+            }
         }
     }
 

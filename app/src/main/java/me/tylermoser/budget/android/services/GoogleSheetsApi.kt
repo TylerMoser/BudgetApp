@@ -46,7 +46,7 @@ interface GoogleSheetsApi {
      * @param expense The expense to append to the Google Sheet
      * @param doAfterRequest A callback lambda to be executed after this expense has been appended
      */
-    fun appendNewExpense(spreadsheetID: String, sheetName: String, expense: Expense, doAfterRequest: () -> Unit)
+    fun appendNewExpense(spreadsheetID: String, sheetID: String, sheetName: String, expense: Expense, doAfterRequest: () -> Unit)
 
     // =============================================================================================
 

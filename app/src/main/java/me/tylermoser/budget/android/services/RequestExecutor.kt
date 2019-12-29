@@ -1,9 +1,6 @@
 package me.tylermoser.budget.android.services
 
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.withContext
+import kotlinx.coroutines.*
 
 /**
  * A helper class to improve the code readability of executing API requests and then
@@ -28,8 +25,8 @@ class RequestExecutor() {
             crossinline doOnAsyncThread: () -> Unit
     ) {
         ensureDeviceConnectedToNetwork()
-        launch(UI) {
-            withContext(CommonPool) {
+        GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Default) {
                 doOnAsyncThread()
             }
             doOnUIThreadAfterExecution()
@@ -48,8 +45,8 @@ class RequestExecutor() {
             crossinline doOnAsyncThread: () -> T
     ) {
         ensureDeviceConnectedToNetwork()
-        launch(UI) {
-            val result = withContext(CommonPool) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = withContext(Dispatchers.Default) {
                 doOnAsyncThread()
             }
             doOnUIThreadAfterExecution(result)

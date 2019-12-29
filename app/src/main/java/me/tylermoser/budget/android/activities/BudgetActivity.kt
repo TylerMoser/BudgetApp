@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
-import android.support.v4.app.DialogFragment
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import androidx.fragment.app.DialogFragment
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -20,6 +20,7 @@ import me.tylermoser.budget.R
 import me.tylermoser.budget.android.fragments.*
 import me.tylermoser.budget.android.models.SheetEntry
 import me.tylermoser.budget.android.services.*
+import androidx.appcompat.widget.Toolbar
 
 /**
  * The main Activity for the budget app. This app has a single main activity with a navigation
@@ -143,21 +144,21 @@ class BudgetActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     /**
      * Used to restore state on screen rotation
      */
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         if (isCurrentFragmentInitialized()) {
             when (currentFragment) {
                 is AppSettingsFragment -> {
-                    outState?.putString(savedFragmentTypeKey, AppSettingsFragment::class.java.name)
+                    outState.putString(savedFragmentTypeKey, AppSettingsFragment::class.java.name)
                 }
                 is ActiveBudgetFragment -> {
-                    outState?.putString(savedFragmentTypeKey, ActiveBudgetFragment::class.java.name)
-                    outState?.putString(savedSheetIDKey, activeBudgetFragment.sheetID)
-                    outState?.putString(savedSheetNameKey, activeBudgetFragment.sheetName)
+                    outState.putString(savedFragmentTypeKey, ActiveBudgetFragment::class.java.name)
+                    outState.putString(savedSheetIDKey, activeBudgetFragment.sheetID)
+                    outState.putString(savedSheetNameKey, activeBudgetFragment.sheetName)
                 }
                 is ArchivedBudgetFragment -> {
-                    outState?.putString(savedFragmentTypeKey, ArchivedBudgetFragment::class.java.name)
-                    outState?.putString(savedSheetIDKey, archivedBudgetFragment.sheetID)
-                    outState?.putString(savedSheetNameKey, archivedBudgetFragment.sheetName)
+                    outState.putString(savedFragmentTypeKey, ArchivedBudgetFragment::class.java.name)
+                    outState.putString(savedSheetIDKey, archivedBudgetFragment.sheetID)
+                    outState.putString(savedSheetNameKey, archivedBudgetFragment.sheetName)
                 }
             }
         }

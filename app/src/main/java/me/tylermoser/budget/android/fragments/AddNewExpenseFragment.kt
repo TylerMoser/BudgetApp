@@ -5,7 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -98,6 +98,7 @@ class AddNewExpenseFragment : Fragment() {
 
         parentActivity.api.appendNewExpense(
                 parentActivity.spreadsheetID,
+                parentBudgetFragment.sheetID,
                 parentBudgetFragment.sheetName,
                 Expense(getDateStringFromEditText(),
                         expenseDescriptionEditText.text.toString(),
@@ -114,7 +115,16 @@ class AddNewExpenseFragment : Fragment() {
 
             // Resets the contents of the Activity to reflect the new changes, as well as any
             // changes that others have made to the sheet since the activity was loaded
-            parentBudgetFragment.refresh()
+            //      Resolving issue found when updating app for start of 2020:
+            // When a new expense is added and the refresh kicks off afterwards, even though the
+            // update request has completed the refresh returns the not-updated sheet unless a
+            // slight delay is added before making the request to get the sheet. Instead of adding
+            // this delay, the change is being made to update the cache when the expense is added
+            // and update the UI using the cache.
+            //      This has the disadvantage of not pulling in changes made by other users, but
+            // that is not a real issue at this point in time.
+            //parentBudgetFragment.refresh()
+            parentBudgetFragment.loadSheetFromCache()
 
             submitNewExpenseButton?.text = "Completed"
             Handler().postDelayed({
